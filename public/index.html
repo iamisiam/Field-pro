@@ -1559,7 +1559,7 @@ function saveForm() {
 }
 
 function previewForm(id) {
-  const forms=DB.get('forms')||[]; const f=forms.find(x=>x.id===id); if(!f) return;
+  const forms=DB.get('forms')||[]; const f=forms.find(x=>x.id=id); if(!f) return;
   const html=f.fields.map(fi=>{
     const inp = fi.type==='checkbox'?\\`<input type="checkbox" style="margin-top:4px;accent-color:var(--blue)">\\`:
       fi.type==='select'?\\`<select style="width:100%">\${(fi.options||'').split(',').map(o=>\\`<option>\${o.trim()}</option>\\`).join('')}</select>\\`:
@@ -1676,6 +1676,4 @@ function renderPortal() {
 document.getElementById('dashDate').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 </script>
 </body>
-</html>`;
-  });
-}
+</html>`;});
