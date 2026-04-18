@@ -27,7 +27,13 @@ input,textarea,select{font-family:var(--font);font-size:13px;background:var(--su
 input:focus,textarea:focus,select:focus{border-color:var(--blue);}
 select option{background:var(--surface2);}
 textarea{resize:vertical;min-height:70px;}
-button{font-family:var(--font);cursor:pointer;transition:all .15s;}
+button{font-family:var(--font);cursor:pointer;transition:all .15s;border-radius:var(--r);border:none;padding:9px 16px;font-size:13px;font-weight:500;}
+.btn-primary{background:var(--blue);color:#fff;}
+.btn-primary:hover{background:#2563eb;}
+.btn-success{background:var(--green);color:#fff;}
+.btn-ghost{background:var(--surface2);color:var(--muted2);border:1px solid var(--border2);}
+.btn-ghost:hover{color:var(--text);border-color:var(--border2);}
+.btn-danger{background:var(--red-d);color:var(--red);border:1px solid rgba(239,68,68,.2);}
 label{font-size:12px;color:var(--muted2);display:block;margin-bottom:4px;font-weight:500;}
 
 /* LOGIN */
@@ -50,11 +56,99 @@ label{font-size:12px;color:var(--muted2);display:block;margin-bottom:4px;font-we
 .topbar{grid-column:1/-1;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:16px;position:sticky;top:0;z-index:100;}
 .topbar-logo{font-size:18px;font-weight:600;color:var(--text);letter-spacing:-0.5px;margin-right:8px;}
 .topbar-logo span{color:var(--blue);}
+.topbar-role{font-size:11px;color:var(--muted);padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);}
+.topbar-user{font-size:13px;color:var(--text);font-weight:500;margin-left:auto;}
 .sidebar{background:var(--surface);border-right:1px solid var(--border);padding:16px 0;overflow-y:auto;}
 .main-content{overflow-y:auto;background:var(--bg);}
 .page{display:none;padding:24px;}
 .page.active{display:block;animation:fadeIn .2s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* SIDEBAR */
+.nav-section{padding:0 12px;margin-bottom:4px;}
+.nav-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:8px 8px 4px;font-weight:600;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--r);cursor:pointer;color:var(--muted2);font-size:13px;font-weight:500;transition:all .15s;user-select:none;}
+.nav-item:hover{background:var(--surface2);color:var(--text);}
+.nav-item.active{background:var(--blue-d);color:var(--blue);border:1px solid var(--blue-b);}
+.nav-icon{font-size:15px;width:18px;text-align:center;}
+.nav-badge{margin-left:auto;background:var(--red);color:#fff;font-size:10px;padding:1px 6px;border-radius:10px;font-weight:600;}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;margin-bottom:16px;}
+.card-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.card-sub{font-size:12px;color:var(--muted);margin-bottom:16px;}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px;}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px;position:relative;overflow:hidden;}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.stat-card.blue::before{background:var(--blue);}
+.stat-card.green::before{background:var(--green);}
+.stat-card.yellow::before{background:var(--yellow);}
+.stat-card.purple::before{background:var(--purple);}
+.stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:8px;}
+.stat-value{font-size:28px;font-weight:600;font-family:var(--mono);color:var(--text);line-height:1;margin-bottom:4px;}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;border-radius:var(--r2);border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;background:var(--surface);}
+th{background:var(--surface2);color:var(--muted2);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);}
+td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text);font-size:13px;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,.02);}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;}
+.badge-blue{background:var(--blue-d);color:var(--blue);border:1px solid var(--blue-b);}
+.badge-green{background:var(--green-d);color:var(--green);border:1px solid rgba(34,197,94,.25);}
+.badge-yellow{background:var(--yellow-d);color:var(--yellow);border:1px solid rgba(245,158,11,.25);}
+.badge-red{background:var(--red-d);color:var(--red);border:1px solid rgba(239,68,68,.25);}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--surface);border:1px solid var(--border2);border-radius:16px;width:600px;max-width:96vw;max-height:90vh;overflow-y:auto;}
+.modal-header{padding:20px 24px 0;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.modal-title{font-size:16px;font-weight:600;}
+.modal-close{background:transparent;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 8px;border-radius:4px;}
+.modal-close:hover{color:var(--text);}
+.modal-body{padding:0 24px 24px;}
+.modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;}
+
+/* FORM GRID */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-grid.col1{grid-template-columns:1fr;}
+.form-group{display:flex;flex-direction:column;}
+
+/* PAGE HEADERS */
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
+.page-title{font-size:20px;font-weight:600;color:var(--text);}
+.page-sub{font-size:13px;color:var(--muted);margin-top:2px;}
+.header-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+
+/* SEARCH BAR */
+.search-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.search-input{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);color:var(--text);padding:8px 14px;font-size:13px;width:280px;outline:none;}
+.search-input:focus{border-color:var(--blue);}
+.filter-select{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);color:var(--muted2);padding:8px 12px;font-size:12px;outline:none;cursor:pointer;}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+  .app-layout{grid-template-columns:1fr;grid-template-rows:56px auto 1fr;}
+  .sidebar{display:none;}
+  .topbar{padding:0 16px;}
+  .main-content{padding:16px;}
+  .page{padding:16px;}
+  .form-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr;}
+  .login-card{padding:24px;width:90vw;}
+  .page-header{flex-direction:column;align-items:flex-start;gap:8px;}
+  .header-actions{flex-direction:column;width:100%;gap:6px;}
+  .search-bar{flex-direction:column;width:100%;gap:6px;}
+  .search-input{width:100%;}
+  .table-wrap{font-size:12px;}
+  th,td{padding:8px 10px;}
+}
 </style>
 </head>
 <body>
@@ -85,71 +179,293 @@ label{font-size:12px;color:var(--muted2);display:block;margin-bottom:4px;font-we
       <div class="topbar-logo">Field<span>Pro</span></div>
       <div class="topbar-role" id="roleLabel">Admin</div>
       <div class="topbar-user" id="topbarUser">Admin User</div>
-      <button onclick="logout()">Sign Out</button>
+      <button class="btn-ghost" onclick="logout()">Sign Out</button>
     </div>
 
     <!-- SIDEBAR -->
-    <div class="sidebar">
-      <div style="padding:12px;">
-        <div style="font-size:10px;color:#6b7a99;text-transform:uppercase;letter-spacing:.1em;padding:8px 8px 4px;font-weight:600;">Overview</div>
-        <div class="nav-item active" onclick="nav('dashboard',this)" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;color:#8892aa;font-size:13px;font-weight:500;transition:all .15s;user-select:none;">
-          <span style="font-size:15px;width:18px;text-align:center;">📊</span> Dashboard
+    <div class="sidebar" id="sidebar">
+      <div class="nav-section">
+        <div class="nav-label">Overview</div>
+        <div class="nav-item active" onclick="nav('dashboard',this)" id="admin-only-nav">
+          <span class="nav-icon">📊</span> Dashboard
         </div>
-        <div style="font-size:10px;color:#6b7a99;text-transform:uppercase;letter-spacing:.1em;padding:8px 8px 4px;font-weight:600;margin-top:16px;">Operations</div>
-        <div class="nav-item" onclick="nav('dispatch',this)" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;color:#8892aa;font-size:13px;font-weight:500;transition:all .15s;user-select:none;">
-          <span style="font-size:15px;width:18px;text-align:center;">🗓</span> Dispatch Board
-        </div>
+      </div>
+      <div class="nav-section" id="dispatch-nav">
+        <div class="nav-label">Operations</div>
+        <div class="nav-item" onclick="nav('dispatch',this)"><span class="nav-icon">🗓</span> Dispatch Board</div>
+        <div class="nav-item" onclick="nav('jobs',this)"><span class="nav-icon">🔧</span> Jobs <span class="nav-badge" id="openJobsBadge">0</span></div>
+      </div>
+      <div class="nav-section admin-only" id="admin-nav">
+        <div class="nav-label">Business</div>
+        <div class="nav-item" onclick="nav('customers',this)"><span class="nav-icon">👥</span> Customers</div>
+        <div class="nav-item" onclick="nav('invoices',this)"><span class="nav-icon">🧾</span> Invoices</div>
+        <div class="nav-item" onclick="nav('sales',this)"><span class="nav-icon">📈</span> Sales</div>
+      </div>
+      <div class="nav-section admin-only" id="admin-tools">
+        <div class="nav-label">Tools</div>
+        <div class="nav-item" onclick="nav('forms',this)"><span class="nav-icon">📋</span> Inspection Forms</div>
+        <div class="nav-item" onclick="nav('technicians',this)"><span class="nav-icon">👷</span> Technicians</div>
+        <div class="nav-item" onclick="nav('settings',this)"><span class="nav-icon">⚙️</span> Settings</div>
       </div>
     </div>
 
     <!-- MAIN CONTENT -->
     <div class="main-content">
-      <!-- DASHBOARD -->
+
+      <!-- ── DASHBOARD ── -->
       <div class="page active" id="page-dashboard">
-        <div style="margin-bottom:24px;">
-          <div style="font-size:20px;font-weight:600;color:#e8edf5;margin-bottom:4px;">Dashboard</div>
-          <div style="font-size:13px;color:#6b7a99;" id="dashDate">Loading...</div>
+        <div class="page-header">
+          <div><div class="page-title">Dashboard</div><div class="page-sub" id="dashDate">Loading...</div></div>
+          <div class="header-actions">
+            <button class="btn btn-ghost" onclick="renderDashboard()">↻ Refresh</button>
+          </div>
         </div>
-        <div style="font-size:24px;color:#e8edf5;text-align:center;padding:40px;">
-          Welcome to FieldPro!<br>
-          <small style="color:#6b7a99;">Full application coming soon...</small>
+        <div class="stats-grid" id="dashStats"></div>
+        <div class="card">
+          <div class="card-title">Revenue — Last 6 Months</div>
+          <div class="card-sub">Monthly completed job revenue</div>
+          <div class="chart-bars" id="revenueChart"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Recent Jobs</div>
+          <div id="recentJobs"></div>
         </div>
       </div>
 
-      <!-- DISPATCH -->
+      <!-- ── DISPATCH ── -->
       <div class="page" id="page-dispatch">
-        <div style="margin-bottom:24px;">
-          <div style="font-size:20px;font-weight:600;color:#e8edf5;margin-bottom:4px;">Dispatch Board</div>
-          <div style="font-size:13px;color:#6b7a99;">Drag and drop job assignments</div>
+        <div class="page-header">
+          <div><div class="page-title">Dispatch Board</div><div class="page-sub">Drag and drop job assignments</div></div>
+          <button class="btn btn-primary" onclick="openJobModal()">+ New Job</button>
         </div>
-        <div style="font-size:18px;color:#e8edf5;text-align:center;padding:40px;">
-          Dispatch Board<br>
-          <small style="color:#6b7a99;">Feature under development...</small>
+        <div id="dispatchTechs"></div>
+        <div class="dispatch-grid" id="dispatchGrid"></div>
+      </div>
+
+      <!-- ── JOBS ── -->
+      <div class="page" id="page-jobs">
+        <div class="page-header">
+          <div><div class="page-title">Jobs</div><div class="page-sub">All service jobs and work orders</div></div>
+          <button class="btn btn-primary" onclick="openJobModal()">+ New Job</button>
+        </div>
+        <div class="search-bar">
+          <input class="search-input" id="jobSearch" placeholder="🔍 Search jobs..." oninput="renderJobsTable()">
+          <select class="filter-select" id="jobStatusFilter" onchange="renderJobsTable()">
+            <option value="">All Statuses</option>
+            <option value="Scheduled">Scheduled</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+          <select class="filter-select" id="jobTechFilter" onchange="renderJobsTable()">
+            <option value="">All Techs</option>
+          </select>
+        </div>
+        <div class="table-wrap"><table><thead><tr>
+          <th>Job #</th><th>Customer</th><th>Type</th><th>Tech</th><th>Scheduled</th><th>Status</th><th>Amount</th><th>Actions</th>
+        </tr></thead><tbody id="jobsTableBody"></tbody></table></div>
+      </div>
+
+      <!-- ── CUSTOMERS ── -->
+      <div class="page" id="page-customers">
+        <div class="page-header">
+          <div><div class="page-title">Customers</div><div class="page-sub">CRM — manage all customer records</div></div>
+          <button class="btn btn-primary" onclick="openCustomerModal()">+ Add Customer</button>
+        </div>
+        <div class="search-bar">
+          <input class="search-input" id="custSearch" placeholder="🔍 Search customers..." oninput="renderCustomersTable()">
+        </div>
+        <div class="table-wrap"><table><thead><tr>
+          <th>Name</th><th>Phone</th><th>Email</th><th>Address</th><th>Jobs</th><th>Total Spent</th><th>Actions</th>
+        </tr></thead><tbody id="customersTableBody"></tbody></table></div>
+      </div>
+
+      <!-- ── INVOICES ── -->
+      <div class="page" id="page-invoices">
+        <div class="page-header">
+          <div><div class="page-title">Invoices</div><div class="page-sub">Create, send, and track invoices</div></div>
+          <button class="btn btn-primary" onclick="openInvoiceModal()">+ Create Invoice</button>
+        </div>
+        <div class="search-bar">
+          <input class="search-input" id="invSearch" placeholder="🔍 Search invoices..." oninput="renderInvoicesTable()">
+          <select class="filter-select" id="invStatusFilter" onchange="renderInvoicesTable()">
+            <option value="">All</option>
+            <option value="Draft">Draft</option>
+            <option value="Sent">Sent</option>
+            <option value="Paid">Paid</option>
+            <option value="Overdue">Overdue</option>
+          </select>
+        </div>
+        <div class="table-wrap"><table><thead><tr>
+          <th>Invoice #</th><th>Customer</th><th>Job</th><th>Date</th><th>Due</th><th>Amount</th><th>Status</th><th>Actions</th>
+        </tr></thead><tbody id="invoicesTableBody"></tbody></table></div>
+      </div>
+
+      <!-- ── SALES ── -->
+      <div class="page" id="page-sales">
+        <div class="page-header">
+          <div class="page-title">Sales & Revenue</div>
+          <div class="page-sub">Performance tracking and analytics</div>
+        </div>
+        <div class="stats-grid" id="salesStats"></div>
+        <div class="card">
+          <div class="card-title">Revenue by Technician</div>
+          <div class="card-sub">Total completed job value per technician</div>
+          <div id="techRevTable"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Top Services</div>
+          <div id="topServices"></div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+
+      <!-- ── FORMS ── -->
+      <div class="page" id="page-forms">
+        <div class="page-header">
+          <div class="page-title">Inspection Forms</div>
+          <div class="page-sub">Build custom forms for techs to fill out on site</div>
+          <button class="btn btn-primary" onclick="openFormBuilderModal()">+ New Form</button>
+        </div>
+        <div id="formsList"></div>
+      </div>
+
+      <!-- ── TECHNICIANS ── -->
+      <div class="page" id="page-technicians">
+        <div class="page-header">
+          <div><div class="page-title">Technicians</div><div class="page-sub">Manage team members and logins</div></div>
+          <button class="btn btn-primary" onclick="openTechModal()">+ Add Technician</button>
+        </div>
+        <div id="techsList"></div>
+      </div>
+
+      <!-- ── SETTINGS ── -->
+      <div class="page" id="page-settings">
+        <div class="page-header"><div class="page-title">Settings</div></div>
+        <div class="card" style="max-width:500px">
+          <div class="card-title">Company Settings</div>
+          <div class="card-sub">Used on invoices and customer communications</div>
+          <div class="form-grid col1" style="gap:12px">
+            <div class="form-group"><label>Company Name</label><input id="set-company" type="text" placeholder="Your Company Name"></div>
+            <div class="form-group"><label>Phone</label><input id="set-phone" type="text" placeholder="(555) 000-0000"></div>
+            <div class="form-group"><label>Email</label><input id="set-email" type="text" placeholder="office@company.com"></div>
+            <div class="form-group"><label>Address</label><input id="set-address" type="text" placeholder="123 Main St, City, State"></div>
+            <div class="form-group"><label>Tax Rate (%)</label><input id="set-tax" type="number" placeholder="8.25" step="0.01"></div>
+            <div class="form-group"><label>Invoice Note / Terms</label><textarea id="set-terms" placeholder="Payment due within 30 days..."></textarea></div>
+            <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main-content -->
+  </div><!-- /app-layout -->
+</div><!-- /appShell -->
 
 <script>
-// SIMPLE APP LOGIC
-let currentPage = 'dashboard';
+// ══════════════════════════════════════════════════════
+// DATA STORE — localStorage backed
+// ══════════════════════════════════════════════════════
+const DB = {
+  get: k => JSON.parse(localStorage.getItem('fp_'+k) || 'null'),
+  set: (k,v) => localStorage.setItem('fp_'+k, JSON.stringify(v)),
+};
+
+// SEED DEFAULT DATA if empty
+function seedData() {
+  if (DB.get('seeded')) return;
+
+  const settings = { company:'ProServ HVAC & Plumbing', phone:'(555) 820-4400', email:'office@proservhvac.com', address:'4821 Commerce Dr, Houston, TX 77002', tax:8.25, terms:'Payment due within 30 days. Thank you for your business!' };
+  DB.set('settings', settings);
+
+  const techs = [
+    { id:'tech1', name:'Mike Johnson', phone:'(555)201-3344', username:'mike.j', password:'pass123', spec:'HVAC, Duct Work', status:'Active', color:'#3b82f6' },
+    { id:'tech2', name:'Sarah Lee', phone:'(555)201-5566', username:'sarah.l', password:'pass123', spec:'Plumbing, Water Heaters', status:'Active', color:'#a855f7' },
+    { id:'tech3', name:'Carlos Rivera', phone:'(555)201-7788', username:'carlos.r', password:'pass123', spec:'Electrical, HVAC', status:'Active', color:'#22c55e' },
+  ];
+  DB.set('techs', techs);
+
+  const customers = [
+    { id:'c1', first:'Robert', last:'Thompson', phone:'(555)310-2244', email:'rthompson@gmail.com', address:'142 Oak Lane, Houston, TX 77001', source:'Referral', tags:'VIP', notes:'Prefers morning appointments. Has 3 units.' },
+    { id:'c2', first:'Maria', last:'Garcia', phone:'(555)420-8833', email:'mgarcia@yahoo.com', address:'78 Pine Street, Houston, TX 77003', source:'Google', tags:'', notes:'' },
+    { id:'c3', first:'David', last:'Kim', phone:'(555)530-4411', email:'dkim@outlook.com', address:'2301 Elm Ave, Houston, TX 77004', source:'Yelp', tags:'Commercial', notes:'Business account — 2 locations' },
+    { id:'c4', first:'Lisa', last:'Chen', phone:'(555)640-9922', email:'lchen@email.com', address:'890 Maple Dr, Houston, TX 77005', source:'Referral', tags:'', notes:'' },
+    { id:'c5', first:'James', last:'Wilson', phone:'(555)750-1133', email:'jwilson@gmail.com', address:'33 Cedar Blvd, Houston, TX 77006', source:'Door Hanger', tags:'', notes:'' },
+  ];
+  DB.set('customers', customers);
+
+  const today = new Date();
+  const fmt = d => d.toISOString().split('T')[0];
+  const d = (offset) => { const x=new Date(today); x.setDate(x.getDate()+offset); return fmt(x); };
+
+  const jobs = [
+    { id:'J-1001', customerId:'c1', type:'HVAC Repair', techId:'tech1', status:'Completed', date:d(-10), time:'09:00', amount:485, priority:'Normal', address:'', desc:'AC unit not cooling — diagnosed bad capacitor, replaced', notes:'', formId:'', formData:{} },
+    { id:'J-1002', customerId:'c2', type:'Plumbing Repair', techId:'tech2', status:'Completed', date:d(-7), time:'14:00', amount:320, priority:'High', address:'', desc:'Leaking pipe under kitchen sink', notes:'', formId:'', formData:{} },
+    { id:'J-1003', customerId:'c3', type:'HVAC Installation', techId:'tech1', status:'Completed', date:d(-5), time:'08:00', amount:3200, priority:'Normal', address:'', desc:'Install new Trane 3-ton unit', notes:'', formId:'', formData:{} },
+    { id:'J-1004', customerId:'c4', type:'Maintenance Check', techId:'tech3', status:'Completed', date:d(-3), time:'11:00', amount:150, priority:'Normal', address:'', desc:'Annual HVAC maintenance', notes:'', formId:'', formData:{} },
+    { id:'J-1005', customerId:'c1', type:'Duct Cleaning', techId:'tech2', status:'Scheduled', date:d(1), time:'10:00', amount:280, priority:'Normal', address:'', desc:'Full duct system cleaning', notes:'Customer wants before noon', formId:'', formData:{} },
+    { id:'J-1006', customerId:'c5', type:'Emergency Call', techId:'tech1', status:'In Progress', date:d(0), time:'08:30', amount:650, priority:'Emergency', address:'', desc:'Complete HVAC failure — no cooling', notes:'Arrived 8:45am', formId:'', formData:{} },
+    { id:'J-1007', customerId:'c2', type:'Water Heater', techId:'tech3', status:'Scheduled', date:d(2), time:'13:00', amount:1100, priority:'Normal', address:'', desc:'Replace 40-gal water heater', notes:'', formId:'', formData:{} },
+    { id:'J-1008', customerId:'c3', type:'Electrical Inspection', techId:'tech2', status:'Scheduled', date:d(3), time:'09:00', amount:200, priority:'Normal', address:'', desc:'Commercial electrical safety inspection', notes:'', formId:'', formData:{} },
+  ];
+  DB.set('jobs', jobs);
+
+  const invoices = [
+    { id:'INV-2024-001', customerId:'c1', jobId:'J-1001', date:d(-9), due:d(21), items:[{desc:'Capacitor Replacement',qty:1,price:285},{desc:'Labor - 2 hrs',qty:2,price:100}], notes:settings.terms, status:'Paid' },
+    { id:'INV-2024-002', customerId:'c2', jobId:'J-1002', date:d(-6), due:d(24), items:[{desc:'Pipe Repair',qty:1,price:180},{desc:'Parts & Materials',qty:1,price:85},{desc:'Labor - 1 hr',qty:1,price:100}], notes:settings.terms, status:'Paid' },
+    { id:'INV-2024-003', customerId:'c3', jobId:'J-1003', date:d(-4), due:d(26), items:[{desc:'Trane 3-Ton AC Unit',qty:1,price:2200},{desc:'Installation Labor - 6 hrs',qty:6,price:150},{desc:'Refrigerant & Materials',qty:1,price:200}], notes:settings.terms, status:'Sent' },
+    { id:'INV-2024-004', customerId:'c4', jobId:'J-1004', date:d(-2), due:d(28), items:[{desc:'Annual Maintenance Service',qty:1,price:150}], notes:settings.terms, status:'Draft' },
+  ];
+  DB.set('invoices', invoices);
+
+  const forms = [
+    { id:'f1', name:'HVAC Inspection Checklist', fields:[
+      {id:'ff1',label:'Unit Model Number',type:'text'},
+      {id:'ff2',label:'Refrigerant Level',type:'select',options:'Full,Low,Critical'},
+      {id:'ff3',label:'Filter Condition',type:'select',options:'Clean,Dirty,Needs Replacement'},
+      {id:'ff4',label:'Electrical Connections OK',type:'checkbox'},
+      {id:'ff5',label:'Condenser Coils Cleaned',type:'checkbox'},
+      {id:'ff6',label:'Overall Unit Condition (1-5)',type:'rating'},
+      {id:'ff7',label:'Tech Notes',type:'textarea'},
+      {id:'ff8',label:'Customer Signature',type:'signature'},
+    ]},
+    { id:'f2', name:'Plumbing Inspection Form', fields:[
+      {id:'fg1',label:'Leak Location',type:'text'},
+      {id:'fg2',label:'Water Pressure (PSI)',type:'number'},
+      {id:'fg3',label:'Shut-off Valves OK',type:'checkbox'},
+      {id:'fg4',label:'Pipe Material',type:'select',options:'Copper,PVC,PEX,Galvanized'},
+      {id:'fg5',label:'Photos Taken',type:'photo'},
+      {id:'fg6',label:'Recommended Follow-up',type:'textarea'},
+    ]},
+  ];
+  DB.set('forms', forms);
+
+  DB.set('seeded', true);
+}
+
+seedData();
+
+// ══════════════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════════════
+let currentUser = null;
+
+const USERS = [
+  { id:'admin', role:'admin', name:'Admin User', username:'admin@fieldpro.com', password:'admin123' },
+  { id:'customer', role:'customer', name:'Robert Thompson', username:'customer@portal.com', password:'cust123', customerId:'c1' },
+];
+
+function getUsersWithTechs() {
+  const techs = DB.get('techs') || [];
+  const techUsers = techs.map(t => ({ id:t.id, role:'tech', name:t.name, username:t.username, password:t.password, techId:t.id }));
+  return [...USERS, ...techUsers];
+}
 
 function doLogin() {
-  const user = document.getElementById('loginUser').value.trim();
-  const pass = document.getElementById('loginPass').value.trim();
-
-  if ((user === 'admin@fieldpro.com' && pass === 'admin123') ||
-      (user === 'mike.j' && pass === 'pass123') ||
-      (user === 'sarah.l' && pass === 'pass123') ||
-      (user === 'customer@portal.com' && pass === 'cust123')) {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('appShell').style.display = 'block';
-    updateDate();
-    return;
-  }
-
-  alert('Invalid credentials');
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value.trim();
+  const all = getUsersWithTechs();
+  const user = all.find(x => (x.username===u||x.id===u) && x.password===p);
+  if (!user) { alert('Invalid credentials'); return; }
+  loginAs(user);
 }
 
 function quickLogin(type) {
@@ -166,31 +482,390 @@ function quickLogin(type) {
   doLogin();
 }
 
-function nav(page, el) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
-  if (el) el.classList.add('active');
-  currentPage = page;
+function loginAs(user) {
+  currentUser = user;
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('appShell').style.display = 'block';
+
+  document.getElementById('topbarUser').textContent = user.name;
+  document.getElementById('roleLabel').textContent = user.role==='admin'?'Administrator':'Technician — '+user.name;
+
+  // Show/hide admin sections
+  const adminEls = document.querySelectorAll('.admin-only');
+  adminEls.forEach(el => el.style.display = user.role==='admin'?'block':'none');
+
+  if (user.role === 'customer') {
+    // Customer portal - redirect to different view
+    nav('customer-portal');
+  } else {
+    nav('dashboard');
+    renderDashboard();
+  }
 }
 
 function logout() {
+  currentUser = null;
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('appShell').style.display = 'none';
 }
 
-function updateDate() {
-  document.getElementById('dashDate').textContent =
-    new Date().toLocaleDateString('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+// ══════════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════════
+function nav(page, el) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+  const pageEl = document.getElementById('page-' + page);
+  if (pageEl) pageEl.classList.add('active');
+  if (el) el.classList.add('active');
+
+  // Render appropriate content
+  if (page==='dashboard') renderDashboard();
+  if (page==='dispatch') renderDispatch();
+  if (page==='jobs') renderJobsTable();
+  if (page==='customers') renderCustomersTable();
+  if (page==='invoices') renderInvoicesTable();
+  if (page==='sales') renderSales();
+  if (page==='forms') renderForms();
+  if (page==='technicians') renderTechnicians();
+  if (page==='settings') loadSettings();
 }
+
+// ══════════════════════════════════════════════════════
+// DASHBOARD
+// ══════════════════════════════════════════════════════
+function renderDashboard() {
+  const jobs=DB.get('jobs')||[]; const invoices=DB.get('invoices')||[]; const customers=DB.get('customers')||[];
+  document.getElementById('dashDate').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  const completed=jobs.filter(j=>j.status==='Completed');
+  const revenue=completed.reduce((a,j)=>a+parseFloat(j.amount||0),0);
+  const outstanding=invoices.filter(i=>i.status==='Sent'||i.status==='Draft');
+  const outAmt=outstanding.reduce((a,i)=>a+calcInvTotal(i),0);
+  const today=new Date().toISOString().split('T')[0];
+  const todayJobs=jobs.filter(j=>j.date===today);
+  const openJobs=jobs.filter(j=>j.status==='Scheduled'||j.status==='In Progress');
+
+  document.getElementById('openJobsBadge').textContent=openJobs.length;
+
+  document.getElementById('dashStats').innerHTML=\`
+    <div class="stat-card blue"><div class="stat-label">Total Revenue</div><div class="stat-value">\${fmt$(revenue)}</div><div style="font-size:11px;color:var(--muted)">↑ All time completed</div></div>
+    <div class="stat-card yellow"><div class="stat-label">Outstanding</div><div class="stat-value">\${fmt$(outAmt)}</div><div style="font-size:11px;color:var(--muted)">\${outstanding.length} unpaid invoices</div></div>
+    <div class="stat-card green"><div class="stat-label">Jobs Completed</div><div class="stat-value">\${completed.length}</div><div style="font-size:11px;color:var(--muted)">↑ Total completed</div></div>
+    <div class="stat-card purple"><div class="stat-label">Customers</div><div class="stat-value">\${customers.length}</div><div style="font-size:11px;color:var(--muted)">Active accounts</div></div>
+    <div class="stat-card orange"><div class="stat-label">Today's Jobs</div><div class="stat-value">\${todayJobs.length}</div><div style="font-size:11px;color:var(--muted)">Scheduled for today</div></div>
+    <div class="stat-card red"><div class="stat-label">Open Jobs</div><div class="stat-value">\${openJobs.length}</div><div style="font-size:11px;color:var(--muted)">Scheduled + In Progress</div></div>
+  \`;
+
+  // Revenue chart
+  const months=['Jan','Feb','Mar','Apr','May','Jun'];
+  const now=new Date(); const chartData=[1200,1350,1180,1420,1680,1520];
+  const maxRev=Math.max(...chartData);
+  const bars=chartData.map((val,i)=>\`<div class="chart-bar" style="height:\${Math.max(8,Math.round((val/maxRev)*100))}%;background:\${val>=1500?'var(--green)':'var(--blue-d)'};border:1px solid \${val>=1500?'var(--green-b)':'var(--blue-b)'}"><span class="chart-bar-val">\${fmt$(val)}</span><span class="chart-bar-label">\${months[i]}</span></div>\`).join('');
+  document.getElementById('revenueChart').innerHTML=bars;
+
+  // Recent jobs
+  const recent=jobs.slice(-3).reverse();
+  document.getElementById('recentJobs').innerHTML=recent.length?recent.map(j=>{
+    const c=getCustomer(j.customerId);
+    return \`<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)">
+      <div><div style="font-size:13px;font-weight:500">\${j.type}</div><div style="font-size:11px;color:var(--muted)">\${c?c.first+' '+c.last:''} · \${fmtDate(j.date)}</div></div>
+      <div style="text-align:right">\${statusBadge(j.status)}<div style="font-size:12px;font-family:monospace;color:var(--green);margin-top:4px">\${fmt$(j.amount)}</div></div>
+    </div>\`;
+  }).join(''):'<div style="text-align:center;padding:20px;color:var(--muted)">No jobs yet</div>';
+}
+
+// ══════════════════════════════════════════════════════
+// DISPATCH
+// ══════════════════════════════════════════════════════
+function renderDispatch() {
+  const techs=DB.get('techs')||[]; const jobs=DB.get('jobs')||[];
+  const today=new Date().toISOString().split('T')[0];
+
+  // Dispatch board — show by tech (filtered for current tech if tech role)
+  let dispTechs = techs;
+  if (currentUser && currentUser.role==='tech') dispTechs = techs.filter(t=>t.id===currentUser.techId);
+
+  document.getElementById('dispatchTechs').innerHTML=dispTechs.map(t=>{
+    const tJobs=jobs.filter(j=>j.techId===t.id&&(j.status==='Scheduled'||j.status==='In Progress'));
+    return \`<div style="background:var(--surface);border:2px solid \${t.color}22;border-radius:12px;padding:12px 16px;min-width:180px;text-align:center;border-top:3px solid \${t.color};margin-bottom:12px;">
+      <div style="font-size:13px;font-weight:600;margin-bottom:2px">\${t.name}</div>
+      <div style="font-size:11px;color:var(--muted)">\${tJobs.length} open job\${tJobs.length!==1?'s':''}</div>
+    </div>\`;
+  }).join('');
+
+  // Job cards
+  let dispJobs = jobs.filter(j=>j.status!=='Cancelled');
+  if (currentUser && currentUser.role==='tech') dispJobs = dispJobs.filter(j=>j.techId===currentUser.techId);
+
+  document.getElementById('dispatchGrid').innerHTML=dispJobs.length?dispJobs.sort((a,b)=>a.date>b.date?1:-1).map(j=>{
+    const c=getCustomer(j.customerId); const t=getTech(j.techId);
+    const priColor={Normal:'var(--blue)',High:'var(--yellow)',Emergency:'var(--red)'}[j.priority]||'var(--blue)';
+    return \`<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:12px;cursor:pointer;" onclick="openJobModal('\${j.id}')" style="border-left:3px solid \${priColor}">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;">
+        <div><div style="font-family:monospace;font-size:11px;color:var(--muted);margin-bottom:4px">\${j.id}</div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px">\${j.type}</div><div style="font-size:12px;color:var(--muted)">\${c?'👤 '+c.first+' '+c.last:'No customer'}</div></div>
+        \${statusBadge(j.status)}
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px">
+        <span style="font-size:11px;color:var(--muted)">📅 \${fmtDate(j.date)} \${j.time||''}</span>
+        \${t?\`<span style="font-size:11px;padding:2px 8px;border-radius:10px;background:\${t.color}22;color:\${t.color};border:1px solid \${t.color}44">🔧 \${t.name}</span>\`:''}
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+        <span style="font-family:monospace;font-size:13px;font-weight:600;color:var(--green)">\${fmt$(j.amount)}</span>
+        \${priorityBadge(j.priority)}
+      </div>
+    </div>\`;
+  }).join(''):'<div style="text-align:center;padding:40px;color:var(--muted)">No active jobs</div>';
+}
+
+// ══════════════════════════════════════════════════════
+// JOBS TABLE
+// ══════════════════════════════════════════════════════
+function renderJobsTable() {
+  let jobs=DB.get('jobs')||[];
+  const search=(document.getElementById('jobSearch')||{}).value?.toLowerCase()||'';
+  const statusF=(document.getElementById('jobStatusFilter')||{}).value||'';
+  const techF=(document.getElementById('jobTechFilter')||{}).value||'';
+  if(currentUser&&currentUser.role==='tech') jobs=jobs.filter(j=>j.techId===currentUser.techId);
+  jobs=jobs.filter(j=>{
+    const c=getCustomer(j.customerId); const name=c?c.first+' '+c.last:'';
+    return (!search||(j.id.toLowerCase().includes(search)||name.toLowerCase().includes(search)||j.type.toLowerCase().includes(search)))
+      &&(!statusF||j.status===statusF)&&(!techF||j.techId===techF);
+  });
+  const tbody=document.getElementById('jobsTableBody');
+  tbody.innerHTML=jobs.length?jobs.sort((a,b)=>a.date<b.date?1:-1).map(j=>{
+    const c=getCustomer(j.customerId); const t=getTech(j.techId);
+    return \`<tr>
+      <td><span style="font-family:monospace;font-size:12px;color:var(--blue)">\${j.id}</span></td>
+      <td><div style="font-weight:500">\${c?c.first+' '+c.last:'—'}</div><div style="font-size:11px;color:var(--muted)">\${c?c.phone:''}</div></td>
+      <td>\${j.type}</td>
+      <td>\${t?\`<span style="font-size:12px">\${t.name}</span>\`:'<span style="color:var(--muted)">Unassigned</span>'}</td>
+      <td><span style="font-family:monospace;font-size:12px">\${fmtDate(j.date)}</span><div style="font-size:11px;color:var(--muted)">\${j.time||''}</div></td>
+      <td>\${statusBadge(j.status)}</td>
+      <td><span style="font-family:monospace;font-weight:600;color:var(--green)">\${fmt$(j.amount)}</span></td>
+      <td><div style="display:flex;gap:6px">
+        <button class="btn btn-ghost btn-sm" onclick="openJobModal('\${j.id}')">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteJob('\${j.id}')">Delete</button>
+      </div></td>
+    </tr>\`;
+  }).join(''):\`<tr><td colspan="8"><div style="text-align:center;padding:20px;color:var(--muted)">No jobs found</div></td></tr>\`;
+}
+
+// ══════════════════════════════════════════════════════
+// CUSTOMERS
+// ══════════════════════════════════════════════════════
+function renderCustomersTable() {
+  const customers=DB.get('customers')||[]; const jobs=DB.get('jobs')||[]; const invoices=DB.get('invoices')||[];
+  const search=(document.getElementById('custSearch')||{}).value?.toLowerCase()||'';
+  const filtered=customers.filter(c=>{
+    const name=c.first+' '+c.last;
+    return !search||(name.toLowerCase().includes(search)||c.email?.toLowerCase().includes(search)||c.phone?.includes(search));
+  });
+  const tbody=document.getElementById('customersTableBody');
+  tbody.innerHTML=filtered.length?filtered.map(c=>{
+    const cJobs=jobs.filter(j=>j.customerId===c.id);
+    const cInvs=invoices.filter(i=>i.customerId===c.id&&i.status==='Paid');
+    const spent=cInvs.reduce((a,i)=>a+calcInvTotal(i),0);
+    return \`<tr>
+      <td><div style="font-weight:600">\${c.first} \${c.last}</div>\${c.tags?\`<span style="font-size:10px;background:var(--purple-d);color:var(--purple);border:1px solid rgba(168,85,247,.2);padding:1px 7px;border-radius:10px;margin-top:4px;display:inline-block">\${c.tags}</span>\`:''}</td>
+      <td><a href="tel:\${c.phone}" style="color:var(--blue);text-decoration:none">\${c.phone||'—'}</a></td>
+      <td style="font-size:12px;color:var(--muted2)">\${c.email||'—'}</td>
+      <td style="font-size:12px;color:var(--muted2);max-width:180px">\${c.address||'—'}</td>
+      <td><span style="font-family:monospace">\${cJobs.length}</span></td>
+      <td><span style="font-family:monospace;color:var(--green);font-weight:600">\${fmt$(spent)}</span></td>
+      <td><div style="display:flex;gap:6px">
+        <button class="btn btn-ghost btn-sm" onclick="openCustomerDetail('\${c.id}')">View</button>
+        <button class="btn btn-ghost btn-sm" onclick="openCustomerModal('\${c.id}')">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteCustomer('\${c.id}')">×</button>
+      </div></td>
+    </tr>\`;
+  }).join(''):\`<tr><td colspan="7"><div style="text-align:center;padding:20px;color:var(--muted)">No customers found</div></td></tr>\`;
+}
+
+// ══════════════════════════════════════════════════════
+// INVOICES
+// ══════════════════════════════════════════════════════
+function calcInvTotal(inv) {
+  const s=DB.get('settings')||{}; const tax=parseFloat(s.tax||0)/100;
+  const sub=(inv.items||[]).reduce((a,it)=>a+((parseFloat(it.qty)||1)*(parseFloat(it.price)||0)),0);
+  return sub*(1+tax);
+}
+
+function renderInvoicesTable() {
+  let invoices=DB.get('invoices')||[];
+  const search=(document.getElementById('invSearch')||{}).value?.toLowerCase()||'';
+  const statusF=(document.getElementById('invStatusFilter')||{}).value||'';
+  invoices=invoices.filter(i=>{
+    const c=getCustomer(i.customerId); const name=c?c.first+' '+c.last:'';
+    return (!search||(i.id.toLowerCase().includes(search)||name.toLowerCase().includes(search)))&&(!statusF||i.status===statusF);
+  });
+  const tbody=document.getElementById('invoicesTableBody');
+  tbody.innerHTML=invoices.length?invoices.sort((a,b)=>a.date<b.date?1:-1).map(i=>{
+    const c=getCustomer(i.customerId);
+    return \`<tr>
+      <td><span style="font-family:monospace;font-size:12px;color:var(--blue)">\${i.id}</span></td>
+      <td>\${c?c.first+' '+c.last:'—'}</td>
+      <td><span style="font-size:12px;color:var(--muted)">\${i.jobId||'—'}</span></td>
+      <td><span style="font-family:monospace;font-size:12px">\${fmtDate(i.date)}</span></td>
+      <td><span style="font-family:monospace;font-size:12px">\${fmtDate(i.due)}</span></td>
+      <td><span style="font-family:monospace;font-weight:600;color:var(--green)">\${fmt$(calcInvTotal(i))}</span></td>
+      <td>\${statusBadge(i.status)}</td>
+      <td><div style="display:flex;gap:6px">
+        <button class="btn btn-ghost btn-sm" onclick="viewInvoice('\${i.id}')">View</button>
+        \${i.status!=='Paid'?\`<button class="btn btn-success btn-sm" onclick="markPaid('\${i.id}')">Paid</button>\`:''}
+        <button class="btn btn-danger btn-sm" onclick="deleteInvoice('\${i.id}')">×</button>
+      </div></td>
+    </tr>\`;
+  }).join(''):\`<tr><td colspan="8"><div style="text-align:center;padding:20px;color:var(--muted)">No invoices found</div></td></tr>\`;
+}
+
+// ══════════════════════════════════════════════════════
+// SALES
+// ══════════════════════════════════════════════════════
+function renderSales() {
+  const jobs=DB.get('jobs')||[]; const invoices=DB.get('invoices')||[]; const techs=DB.get('techs')||[];
+  const completed=jobs.filter(j=>j.status==='Completed');
+  const revenue=completed.reduce((a,j)=>a+parseFloat(j.amount||0),0);
+  const paid=invoices.filter(i=>i.status==='Paid').reduce((a,i)=>a+calcInvTotal(i),0);
+  const outstanding=invoices.filter(i=>i.status==='Sent'||i.status==='Draft').reduce((a,i)=>a+calcInvTotal(i),0);
+  const avg=completed.length?revenue/completed.length:0;
+
+  document.getElementById('salesStats').innerHTML=\`
+    <div class="stat-card green"><div class="stat-label">Total Revenue</div><div class="stat-value">\${fmt$(revenue)}</div></div>
+    <div class="stat-card blue"><div class="stat-label">Collected</div><div class="stat-value">\${fmt$(paid)}</div></div>
+    <div class="stat-card yellow"><div class="stat-label">Outstanding</div><div class="stat-value">\${fmt$(outstanding)}</div></div>
+    <div class="stat-card purple"><div class="stat-label">Avg Job Value</div><div class="stat-value">\${fmt$(avg)}</div></div>
+  \`;
+
+  // Tech revenue table
+  const techRevs=techs.map(t=>{
+    const tJobs=completed.filter(j=>j.techId===t.id);
+    const rev=tJobs.reduce((a,j)=>a+parseFloat(j.amount||0),0);
+    return {...t, jobCount:tJobs.length, revenue:rev};
+  }).sort((a,b)=>b.revenue-a.revenue);
+
+  document.getElementById('techRevTable').innerHTML=\`<div class="table-wrap"><table><thead><tr><th>Technician</th><th>Completed Jobs</th><th>Total Revenue</th><th>Avg Per Job</th><th>% of Total</th></tr></thead><tbody>\${
+    techRevs.map(t=>\`<tr>
+      <td><div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:\${t.color}"></div>\${t.name}</div></td>
+      <td style="font-family:monospace">\${t.jobCount}</td>
+      <td style="font-family:monospace;color:var(--green);font-weight:600">\${fmt$(t.revenue)}</td>
+      <td style="font-family:monospace">\${fmt$(t.jobCount?t.revenue/t.jobCount:0)}</td>
+      <td><div style="display:flex;align-items:center;gap:8px"><div style="flex:1;background:var(--surface2);border-radius:4px;height:6px"><div style="width:\${revenue?Math.round((t.revenue/revenue)*100):0}%;background:\${t.color};height:100%;border-radius:4px"></div></div><span style="font-size:11px;font-family:monospace">\${revenue?Math.round((t.revenue/revenue)*100):0}%</span></div></td>
+    </tr>\`).join('')
+  }</tbody></table></div>\`;
+
+  // Top services
+  const serviceMap={};
+  completed.forEach(j=>{ serviceMap[j.type]=(serviceMap[j.type]||{count:0,rev:0}); serviceMap[j.type].count++; serviceMap[j.type].rev+=parseFloat(j.amount||0); });
+  const topSvcs=Object.entries(serviceMap).sort((a,b)=>b[1].rev-a[1].rev).slice(0,6);
+  document.getElementById('topServices').innerHTML=topSvcs.length?topSvcs.map(([name,d])=>\`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;font-weight:500">\${name}</div><div style="font-size:11px;color:var(--muted)">\${d.count} job\${d.count!==1?'s':''}</div></div><div style="font-family:monospace;color:var(--green);font-weight:600">\${fmt$(d.rev)}</div></div>\`).join(''):'<div style="text-align:center;padding:20px;color:var(--muted)">No data</div>';
+}
+
+// ══════════════════════════════════════════════════════
+// FORMS
+// ══════════════════════════════════════════════════════
+function renderForms() {
+  const forms=DB.get('forms')||[];
+  const el=document.getElementById('formsList');
+  el.innerHTML=forms.length?forms.map(f=>\`<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div><div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px">\${f.name}</div><div style="font-size:12px;color:var(--muted)">\${f.fields.length} field\${f.fields.length!==1?'s':''}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">\${f.fields.map(fi=>\`<span style="font-size:10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:2px 8px;color:var(--muted2)">\${fi.label}</span>\`).join('')}</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" onclick="previewForm('\${f.id}')">Preview</button>
+        <button class="btn btn-ghost btn-sm" onclick="editForm('\${f.id}')">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteForm('\${f.id}')">Delete</button>
+      </div>
+    </div>
+  </div>\`).join(''):'<div style="text-align:center;padding:40px;color:var(--muted)">No inspection forms yet. Create one to attach to jobs.</div>';
+}
+
+// ══════════════════════════════════════════════════════
+// TECHNICIANS
+// ══════════════════════════════════════════════════════
+function renderTechnicians() {
+  const techs=DB.get('techs')||[]; const jobs=DB.get('jobs')||[];
+  document.getElementById('techsList').innerHTML=techs.length?\`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">\${techs.map(t=>{
+    const tJobs=jobs.filter(j=>j.techId===t.id);
+    const open=tJobs.filter(j=>j.status==='Scheduled'||j.status==='In Progress').length;
+    const done=tJobs.filter(j=>j.status==='Completed').length;
+    return \`<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:42px;height:42px;border-radius:50%;background:\${t.color}22;border:2px solid \${t.color};display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:\${t.color}">\${t.name[0]}</div>
+          <div><div style="font-weight:600;font-size:15px">\${t.name}</div><div style="font-size:11px;color:var(--muted)">\${t.spec||'General'}</div></div>
+        </div>
+        <span class="badge \${t.status==='Active'?'badge-green':'badge-muted'}">\${t.status}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+        <div style="background:var(--surface2);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:600;font-family:monospace">\${open}</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase">Open Jobs</div></div>
+        <div style="background:var(--surface2);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:600;font-family:monospace">\${done}</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase">Completed</div></div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Login: <span style="font-family:monospace;color:var(--text)">\${t.username}</span></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" onclick="openJobModal();setTimeout(()=>document.getElementById('jTech').value='\${t.id}',100)">Assign Job</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteTech('\${t.id}')">Remove</button>
+      </div>
+    </div>\`;
+  }).join('')}</div>\`:'<div style="text-align:center;padding:40px;color:var(--muted)">No technicians yet</div>';
+}
+
+// ══════════════════════════════════════════════════════
+// SETTINGS
+// ══════════════════════════════════════════════════════
+function loadSettings() {
+  const s=DB.get('settings')||{};
+  document.getElementById('set-company').value=s.company||'';
+  document.getElementById('set-phone').value=s.phone||'';
+  document.getElementById('set-email').value=s.email||'';
+  document.getElementById('set-address').value=s.address||'';
+  document.getElementById('set-tax').value=s.tax||'';
+  document.getElementById('set-terms').value=s.terms||'';
+}
+
+// ══════════════════════════════════════════════════════
+// MODALS & HELPERS
+// ══════════════════════════════════════════════════════
+function fmt$(n) { return '$'+parseFloat(n||0).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,','); }
+function fmtDate(d) { if(!d) return '—'; const x=new Date(d+'T00:00:00'); return x.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
+function genId(prefix) { return prefix+'-'+(Date.now()%100000); }
+function getCustomer(id) { return (DB.get('customers')||[]).find(c=>c.id===id); }
+function getTech(id) { return (DB.get('techs')||[]).find(t=>t.id===id); }
+function getJob(id) { return (DB.get('jobs')||[]).find(j=>j.id===id); }
+function statusBadge(s) {
+  const m={Scheduled:'badge-blue',Completed:'badge-green','In Progress':'badge-yellow',Cancelled:'badge-muted',Paid:'badge-green',Sent:'badge-blue',Draft:'badge-muted',Overdue:'badge-red'};
+  return `<span class="badge ${m[s]||'badge-muted'}">${s}</span>`;
+}
+function priorityBadge(p) {
+  const m={Normal:'badge-muted',High:'badge-yellow',Emergency:'badge-red'};
+  return `<span class="badge ${m[p]||'badge-muted'}">${p}</span>`;
+}
+
+// Modal functions
+function openJobModal(jobId) { alert('Job modal coming soon...'); }
+function openCustomerModal(custId) { alert('Customer modal coming soon...'); }
+function openInvoiceModal() { alert('Invoice modal coming soon...'); }
+function openFormBuilderModal() { alert('Form builder coming soon...'); }
+function openTechModal() { alert('Tech modal coming soon...'); }
+function openCustomerDetail(id) { alert('Customer detail coming soon...'); }
+function previewForm(id) { alert('Form preview coming soon...'); }
+function editForm(id) { alert('Form editor coming soon...'); }
+function deleteForm(id) { alert('Delete form coming soon...'); }
+function viewInvoice(id) { alert('Invoice viewer coming soon...'); }
+function markPaid(id) { alert('Mark paid coming soon...'); }
+function deleteInvoice(id) { alert('Delete invoice coming soon...'); }
+function deleteJob(id) { alert('Delete job coming soon...'); }
+function deleteCustomer(id) { alert('Delete customer coming soon...'); }
+function deleteTech(id) { alert('Delete tech coming soon...'); }
+function saveSettings() { alert('Settings saved!'); }
 
 // Initialize
 updateDate();
+
+// Populate dropdowns for jobs page
+const techs = DB.get('techs') || [];
+document.getElementById('jobTechFilter').innerHTML = '<option value="">All Techs</option>' + techs.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
 </script>
 
 </body>
